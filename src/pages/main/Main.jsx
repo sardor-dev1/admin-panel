@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "./main.scss";
 import Sidebar from "../../components/ui/sidebar/Sidebar";
-import Header from "../../components/ui/header/Header";
 
 const Main = () => {
   return (
@@ -9,7 +8,6 @@ const Main = () => {
       <div className="main__layout">
         <Sidebar />
         <div className="main__left">
-          <Header />
           <main>
             <Outlet />
           </main>

@@ -1,31 +1,22 @@
 import { useState } from "react";
 import UserModal from "../../components/modal/UserModal";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Cars = () => {
   const [cars, setCars] = useState([
-    {
-      id: "dfkmsl",
-      name: "MERS",
-      price: "5655",
-      color: "black",
-      year: "2025",
-      brand: "merc",
-      action: "21654",
-    },
-    {
-      id: "kncdkl",
-      name: "BMW",
-      price: "5655",
-      color: "red",
-      year: "2015",
-      brand: "bmw",
-      action: "21654",
-    },
+    { id: "dfkmsl", name: "MERS", price: "5655", color: "black", year: "2025", brand: "merc", action: "21654" },
+    { id: "kncdkl", name: "BMW", price: "5655", color: "red", year: "2015", brand: "bmw", action: "21654" }
   ]);
   const [modal, setModal] = useState(false);
   const [search, setSearch] = useState("");
   const [currentCar, setCurrentCar] = useState(null);
+
+  let navigate = useNavigate()
+  const handleLogOut = () =>{
+    localStorage.clear()
+    navigate("/")
+  }
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -53,7 +44,7 @@ const Cars = () => {
         <div className="row">
           <div className="col-md-10 offset-1">
             <div className="row my-4">
-              <div className="col-4">
+              <div className="col-2">
                 <button
                   className="btn btn-success"
                   onClick={() => {
@@ -64,7 +55,7 @@ const Cars = () => {
                   Open Modal
                 </button>
               </div>
-              <div className="col-8">
+              <div className="col-6">
                 <input
                   type="text"
                   placeholder="Search..."
@@ -72,6 +63,19 @@ const Cars = () => {
                   value={search}
                   onChange={handleSearch}
                 />
+              </div>
+              <div className="col-2">
+                <button className="btn btn-success" onClick={handleLogOut}>
+                  Log out
+                </button>
+              </div>
+              <div className="col-2">
+                <button
+                  className="btn btn-success"
+                  onClick={() => navigate(-1)}
+                >
+                  Go home
+                </button>
               </div>
             </div>
             <div className="row mt-4">
