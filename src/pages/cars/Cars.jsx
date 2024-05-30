@@ -2,21 +2,40 @@ import { useState } from "react";
 import UserModal from "../../components/modal/UserModal";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { nanoid } from "nanoid";
 
 const Cars = () => {
   const [cars, setCars] = useState([
-    { id: "dfkmsl", name: "MERS", price: "5655", color: "black", year: "2025", brand: "merc", action: "21654" },
-    { id: "kncdkl", name: "BMW", price: "5655", color: "red", year: "2015", brand: "bmw", action: "21654" }
+    {
+      id: "dfkmsl",
+      name: "MERS",
+      price: "5655",
+      color: "black",
+      year: "2025",
+      brand: "merc",
+      action: "21654",
+    },
+    {
+      id: "kncdkl",
+      name: "BMW",
+      price: "5655",
+      color: "red",
+      year: "2015",
+      brand: "bmw",
+      action: "21654",
+    },
   ]);
   const [modal, setModal] = useState(false);
   const [search, setSearch] = useState("");
   const [currentCar, setCurrentCar] = useState(null);
 
-  let navigate = useNavigate()
-  const handleLogOut = () =>{
-    localStorage.clear()
-    navigate("/")
-  }
+  const id = nanoid()
+
+  let navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -27,9 +46,14 @@ const Cars = () => {
     setModal(true);
   };
 
+  const handleDelete = (id) => {
+    setCars(cars.filter((car) => car.id == !id));
+  };
+
   const filteredCars = cars.filter((car) =>
     car.name.toLowerCase().includes(search.toLowerCase())
   );
+  console.log(filteredCars);
 
   return (
     <>
@@ -109,7 +133,10 @@ const Cars = () => {
                           >
                             <i className="fa-solid fa-pen-to-square"></i> Edit
                           </button>
-                          <button className="btn btn-danger">
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => handleDelete(item.id)}
+                          >
                             <i className="fa-solid fa-trash-can"></i>
                           </button>
                           <NavLink
