@@ -29,7 +29,7 @@ const Cars = () => {
   const [search, setSearch] = useState("");
   const [currentCar, setCurrentCar] = useState(null);
 
-  const id = nanoid()
+  const id = nanoid();
 
   let navigate = useNavigate();
   const handleLogOut = () => {
@@ -88,12 +88,7 @@ const Cars = () => {
                   onChange={handleSearch}
                 />
               </div>
-              <div className="col-2">
-                <button className="btn btn-success" onClick={handleLogOut}>
-                  Log out
-                </button>
-              </div>
-              <div className="col-2">
+              <div className="col-4">
                 <button
                   className="btn btn-success"
                   onClick={() => navigate(-1)}
