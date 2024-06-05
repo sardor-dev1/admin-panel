@@ -8,10 +8,12 @@ const Brand = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
-      console.log(response);
-      setUsers(response.data);
-    });
+    axios
+      .get("http://jsonplaceholder.typicode.com/users?_page=0&_limit=10")
+      .then((response) => {
+        console.log(response);
+        setUsers(response.data);
+      });
     setLoading(false);
   }, []);
   return (
@@ -38,6 +40,7 @@ const Brand = () => {
               <td>{item.username}</td>
               <td>{item.address.city}</td>
               <td>{item.company.name}</td>
+              <td><button className="btn btn-success">edit</button></td>
             </tr>
           ))}
         </tbody>

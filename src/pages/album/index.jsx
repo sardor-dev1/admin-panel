@@ -8,10 +8,13 @@ const index = () => {
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/photos").then((res) => {
-      console.log(res.data.slice(0, 20));
       setPhotos(res.data.slice(0, 20));
     });
   }, []);
+
+  const handleDeletePhoto = (photoId) => {
+    setPhotos(photos.filter((photo) => photo.id !== photoId));
+  };
 
   return (
     <>
@@ -22,6 +25,7 @@ const index = () => {
             <div className="photos__card" key={index}>
               <img className="photos__img" src={item.url} alt="title" />
               <div>{item.title}</div>
+              <button onClick={() => handleDeletePhoto(item.id)}>Delete</button>
             </div>
           ))}
         </div>

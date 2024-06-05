@@ -1,5 +1,38 @@
 .header {
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  &__wrap {
     width: 100%;
-    padding: 20px 0;
-    text-align: center;
+    margin: 0 auto;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__hamburger {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    background-color: #c3996b;
+  }
+
+  &__out {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    background-color: #c3996b;
+  }
 }

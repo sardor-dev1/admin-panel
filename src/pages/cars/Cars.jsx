@@ -66,7 +66,7 @@ const Cars = () => {
       />
       <div className="container">
         <div className="row">
-          <div className="col-md-10 offset-1">
+          <div className="col-md-12">
             <div className="row my-4">
               <div className="col-2">
                 <button

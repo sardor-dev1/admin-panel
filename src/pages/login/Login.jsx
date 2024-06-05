@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import "./index.scss";
+import loginBg from "../../assets/images/loginBg.jpg";
 
 const Login = () => {
   const [form, setForm] = useState({});
@@ -17,33 +19,34 @@ const Login = () => {
     } else alert("stop");
   };
   return (
+    <section className="login__wrap">
     <div className="container">
-      <div className="row mt-4 offset-3">
-        <div className="col-md-6">
+      <div className="login">
+        <div className="login__modal">
           <div className="card">
             <div className="card-header">
               <h1 className="text-center">login</h1>
             </div>
             <div className="card-body">
-              <form id="submit" onSubmit={handleSubmit}>
+              <form className="form" id="submit" onSubmit={handleSubmit}>
                 <input
                   type="text"
                   onChange={handleChange}
                   placeholder="username"
                   name="username"
-                  className="form-control my-2"
+                  className="login__inp my-2"
                 />
                 <input
                   type="password"
                   onChange={handleChange}
                   placeholder="password"
                   name="password"
-                  className="form-control my-2"
+                  className="login__inp my-2"
                 />
               </form>
             </div>
             <div className="card-footer">
-              <button className="btn btn-success" type="submit" form="submit">
+              <button className="login__btn" type="submit" form="submit">
                 Submit
               </button>
             </div>
@@ -51,6 +54,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 
