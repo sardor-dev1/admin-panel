@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
-// import FreeSolo from "./components/Example";
-// import MediaCard from "./components/Example";
+import MainLayout from "./layout";
 const App = () => {
   return (
     <>

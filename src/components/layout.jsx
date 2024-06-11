@@ -18,9 +18,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
-import SidebarLogo from "../assets/images/nav-logo.png";
 import { routes } from "../router/routes";
-import Header from "./ui/header/Header";
+
 
 import "./layout.scss";
 
@@ -51,9 +50,7 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <Toolbar>
-        <img className="w-100" src={SidebarLogo} alt="" />
-      </Toolbar>
+      <Toolbar />
       <Divider />
       <List>
         {routes.map((route, index) => (
@@ -101,7 +98,6 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Header />
         </Toolbar>
       </AppBar>
       <Box
