@@ -1,59 +1,76 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./index.scss";
-import loginBg from "../../assets/images/loginBg.jpg";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import SnackbarWithDecorators from "../../components/ui/notification";
 
 const Login = () => {
+  
   const [form, setForm] = useState({});
+
   const navigate = useNavigate();
+
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
     const { value, name } = event.target;
     setForm({ ...form, [name]: value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setOpen(true);
+
     const { username, password } = form;
+
     if (username === "admin" && password === "123") {
       navigate("/main");
-    } else alert("stop");
+    } else {
+      alert("an ");
+    }
   };
+
   return (
     <section className="login__wrap">
-    <div className="container">
-      <div className="login">
-        <div className="login__modal">
-          <div className="card">
-            <div className="card-header">
-              <h1 className="text-center">login</h1>
-            </div>
-            <div className="card-body">
-              <form className="form" id="submit" onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  onChange={handleChange}
-                  placeholder="username"
-                  name="username"
-                  className="login__inp my-2"
-                />
-                <input
-                  type="password"
-                  onChange={handleChange}
-                  placeholder="password"
-                  name="password"
-                  className="login__inp my-2"
-                />
-              </form>
-            </div>
-            <div className="card-footer">
-              <button className="login__btn" type="submit" form="submit">
-                Submit
-              </button>
+      <SnackbarWithDecorators open={open} setOpen={setOpen} />
+      <div className="container">
+        <div className="login">
+          <div className="login__modal">
+            <div className="card">
+              <div className="card-header">
+                <h1 className="text-center">login</h1>
+              </div>
+              <div className="card-body">
+                <form className="form " id="submit" onSubmit={handleSubmit}>
+                  <TextField
+                    className="my-3"
+                    onChange={handleChange}
+                    type="username"
+                    name="username"
+                    fullWidth
+                    label="Username"
+                    id="username"
+                  />
+                  <TextField
+                    onChange={handleChange}
+                    type="password"
+                    name="password"
+                    fullWidth
+                    label="Password"
+                    id="password"
+                  />
+                </form>
+              </div>
+              <div className="card-footer">
+                <Button variant="contained" type="submit" form="submit">
+                  Submit
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </section>
   );
 };

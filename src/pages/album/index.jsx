@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import "./index.css";
+// MUI cards
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
+
+// MUI button
+import DeleteIcon from "@mui/icons-material/Delete";
+
+
+import "./index.scss";
 
 const index = () => {
   const [photos, setPhotos] = useState([]);
@@ -19,14 +30,37 @@ const index = () => {
   return (
     <>
       <div className="photos">
-        <h2>Album</h2>
+        <h2 className="text-center py-3">Album</h2>
         <div className="photos__body">
           {photos.map((item, index) => (
-            <div className="photos__card" key={index}>
-              <img className="photos__img" src={item.url} alt="title" />
-              <div>{item.title}</div>
-              <button onClick={() => handleDeletePhoto(item.id)}>Delete</button>
-            </div>
+            <Card sx={{ maxWidth: 360 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={item.url}
+                  alt="green iguana"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {item.title}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <div className="card__footer">
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    onClick={() => handleDeletePhoto(item.id)}
+                    size="small"
+                    color="primary"
+                    startIcon={<DeleteIcon />}
+                  >
+                    Delete
+                  </Button>
+                </CardActions>
+              </div>
+            </Card>
           ))}
         </div>
       </div>

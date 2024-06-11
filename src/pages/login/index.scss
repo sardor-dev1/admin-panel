@@ -1,5 +1,4 @@
 .login__wrap {
-  background-image: url("../../assets/images/loginBg.jpg");
   height: 100vh;
   padding-top: 150px;
   background-repeat: no-repeat;
@@ -17,30 +16,20 @@
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    
+  display: flex;
+  flex-direction: column;
 }
 
 .login__inp {
-    border-radius: 8px;
-    padding: 6px;
-    outline: none;
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-    border: 2px solid orange;
-
-    &:hover {
-        // font-size: ;
-    }
+  border-radius: 8px;
+  padding: 6px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid orange;
 }
 
-.card {
-//   box-shadow: red 0px 7px 29px 0px;
-  color: antiquewhite;
-  background-color: rgb(147, 31, 31);
-}
 
 .login__btn {
   padding: 6px 12px;

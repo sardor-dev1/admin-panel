@@ -1,5 +1,6 @@
 .header {
   background-color: white;
+  color: #c3996b;
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -7,8 +8,8 @@
     width: 100%;
     margin: 0 auto;
     height: 80px;
-    display: grid;
-    grid-template-columns: 2fr 8fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -16,15 +17,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  &__hamburger {
-    padding: 4px 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    color: white;
-    background-color: #c3996b;
   }
 
   &__out {

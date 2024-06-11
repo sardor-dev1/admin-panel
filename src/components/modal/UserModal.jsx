@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
-import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+} from "@mui/material";
 
 const UserModal = (props) => {
-  const { cars, setCars, toggle, currentCar } = props;
+  const { cars, setCars, toggle, currentCar, open } = props;
 
   const [form, setForm] = useState({
     id: "",
@@ -11,6 +18,7 @@ const UserModal = (props) => {
     color: "",
     year: "",
     brand: "",
+    action: "",
   });
 
   useEffect(() => {
@@ -24,6 +32,7 @@ const UserModal = (props) => {
         color: "",
         year: "",
         brand: "",
+        action: "",
       });
     }
   }, [currentCar]);
@@ -45,63 +54,81 @@ const UserModal = (props) => {
   };
 
   return (
-    <Modal isOpen={props.open} toggle={props.toggle}>
-      <ModalHeader>
-        <h1 className="text-center">{form.id ? "Edit Car" : "Add Car"}</h1>
-      </ModalHeader>
-      <ModalBody>
+    <Dialog open={open} onClose={toggle}>
+      <DialogTitle>{form.id ? "Edit Car" : "Add Car"}</DialogTitle>
+      <DialogContent>
         <form onSubmit={handleSubmit} id="submit">
-          <input
+          <TextField
             onChange={handleChange}
             value={form.name}
             type="text"
-            placeholder="Name"
+            label="Name"
             name="name"
-            className="form-control my-2"
+            fullWidth
+            margin="dense"
           />
-          <input
+          <TextField
             onChange={handleChange}
             value={form.price}
             type="number"
-            placeholder="Price"
+            label="Price"
             name="price"
-            className="form-control my-2"
+            fullWidth
+            margin="dense"
           />
-          <input
+          <TextField
             onChange={handleChange}
             value={form.year}
             type="date"
-            placeholder="Year"
+            label="Year"
             name="year"
-            className="form-control my-2"
+            fullWidth
+            margin="dense"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-          <input
+          <TextField
             onChange={handleChange}
             value={form.color}
             type="text"
-            placeholder="Color"
+            label="Color"
             name="color"
-            className="form-control my-2"
+            fullWidth
+            margin="dense"
           />
-          <input
+          <TextField
             onChange={handleChange}
             value={form.brand}
             type="text"
-            placeholder="Brand"
+            label="Brand"
             name="brand"
-            className="form-control my-2"
+            fullWidth
+            margin="dense"
+          />
+          <TextField
+            onChange={handleChange}
+            value={form.action}
+            type="number"
+            label="Action"
+            name="action"
+            fullWidth
+            margin="dense"
           />
         </form>
-      </ModalBody>
-      <ModalFooter>
-        <button className="btn btn-danger" onClick={props.toggle}>
+      </DialogContent>
+      <DialogActions>
+        {/* <Button onClick={toggle} color="secondary">
           Cancel
-        </button>
-        <button className="btn btn-success" type="submit" form="submit">
+        </Button> */}
+        <Button onClick={toggle} color="secondary" variant="contained">
+          Cancel
+        </Button>
+        <Button variant="contained" type="submit" form="submit" color="primary">
           Save
-        </button>
-      </ModalFooter>
-    </Modal>
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 

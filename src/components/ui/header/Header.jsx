@@ -9,16 +9,11 @@ const Header = () => {
         <div>
           <h2>Logo</h2>
         </div>
-        <div className="header__buttons">
-          <button className="header__hamburger">
-            <i class="fa-solid fa-bars"></i>
+        <Link to={"/"}>
+          <button className="header__out">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
           </button>
-          <Link to={"/"}>
-            <button className="header__out">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </button>
-          </Link>
-        </div>
+        </Link>
       </div>
     </div>
   );
