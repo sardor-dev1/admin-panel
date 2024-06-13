@@ -11,4 +11,8 @@ export const routes = [
     path: "/main/brand",
     content: "Brand",
   },
+  {
+    path: "/main/cards",
+    content: "Todo",
+  },
 ];

@@ -15,13 +15,13 @@ import {
   DialogTitle,
   Grid,
 } from "@mui/material";
-
 import { Edit, Delete, Info } from "@mui/icons-material";
 
 import UserModal from "../../components/modalka";
 
-const Cards = () => {
+const Todo = () => {
   const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,11 +29,23 @@ const Cards = () => {
   const [currentStatus, setCurrentStatus] = useState("");
   const [statusAddAnother, setStatusAddAnother] = useState("");
 
+  useEffect(() => {
+    setTimeout(() => {
+      setCars([
+        {
+          id: nanoid(),
+        },
+        {
+          id: nanoid(),
+        },
+      ]);
+      setLoading(false);
+    }, 1000);
+  }, []);
   const openModal = (status) => {
     setCurrentStatus(status);
     setModal(true);
   };
-
 
   const openEditModal = (car) => {
     setCurrentCar(car);
@@ -66,6 +78,7 @@ const Cards = () => {
   );
   const names = ["open", "pending", "inprog", "complete"];
 
+  if (loading) return <CardLoading />;
   return (
     <>
       <UserModal
@@ -231,4 +244,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default Todo;

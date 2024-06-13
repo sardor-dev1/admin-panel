@@ -11,6 +11,8 @@ import SingleCar from "../pages/single-car/SingleCar";
 import Main from "../pages/single-car/main/Main";
 import Brand from "../pages/brand/Brand";
 import Album from "../pages/album/index.jsx";
+import Cards from "../pages/cars/Cars";
+
 const index = () => {
   const router = createBrowserRouter(
     createRoutesFromChildren(
@@ -21,6 +23,7 @@ const index = () => {
           <Route path="single-car/:id" element={<SingleCar />} />
           <Route path="brand" element={<Brand />} />
           <Route path="album" element={<Album />} />
+          <Route path="cards" element={<Cards />} />
         </Route>
       </Route>
     )
