@@ -3,8 +3,7 @@ import Button from "@mui/joy/Button";
 import Snackbar from "@mui/joy/Snackbar";
 import PlaylistAddCheckCircleRoundedIcon from "@mui/icons-material/PlaylistAddCheckCircleRounded";
 
-export default function SnackbarWithDecorators({open, setOpen}) {
-
+export default function SnackbarWithDecorators({ open, setOpen }) {
   return (
     <React.Fragment>
       <Snackbar

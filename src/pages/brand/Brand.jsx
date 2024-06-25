@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import TablePagination from "@mui/material/TablePagination";
 import { styled } from "@mui/material/styles";
 import "./brand.scss";
 
@@ -31,15 +32,25 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Brand = () => {
   const [users, setUsers] = useState([]);
+  const [rowsPerPage, setRowsPerPage] = useState(2); // default rows per page
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     axios
-      .get("http://jsonplaceholder.typicode.com/users?_page=0&_limit=4")
+      .get("http://jsonplaceholder.typicode.com/users?_page=0")
       .then((response) => {
-        console.log(response);
         setUsers(response.data);
       });
   }, []);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <div className="users">
@@ -57,18 +68,32 @@ const Brand = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((user) => (
-              <StyledTableRow key={user.id}>
-                <StyledTableCell>{user.name}</StyledTableCell>
-                <StyledTableCell>{user.phone}</StyledTableCell>
-                <StyledTableCell>{user.email}</StyledTableCell>
-                <StyledTableCell>{user.username}</StyledTableCell>
-                <StyledTableCell>{user.address.city}</StyledTableCell>
-                <StyledTableCell>{user.company.name}</StyledTableCell>
-              </StyledTableRow>
-            ))}
+            {users
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((user) => (
+                <StyledTableRow key={user.id}>
+                  <StyledTableCell>{user.name}</StyledTableCell>
+                  <StyledTableCell>{user.phone}</StyledTableCell>
+                  <StyledTableCell>{user.email}</StyledTableCell>
+                  <StyledTableCell>{user.username}</StyledTableCell>
+                  <StyledTableCell>{user.address.city}</StyledTableCell>
+                  <StyledTableCell>{user.company.name}</StyledTableCell>
+                </StyledTableRow>
+              ))}
           </TableBody>
         </Table>
+
+        <div className="pagination-wrap">
+          <TablePagination
+            rowsPerPageOptions={[2, 4, 6, 8, 10]}
+            component="div"
+            count={users.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </div>
       </TableContainer>
     </div>
   );

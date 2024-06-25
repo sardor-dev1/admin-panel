@@ -8,11 +8,8 @@ import SnackbarWithDecorators from "../../components/ui/notification";
 const Login = () => {
   
   const [form, setForm] = useState({});
-
   const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
-
   const handleChange = (event) => {
     const { value, name } = event.target;
     setForm({ ...form, [name]: value });

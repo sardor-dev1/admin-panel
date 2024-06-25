@@ -16,10 +16,9 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-
 import { routes } from "../router/routes";
-
 
 import "./layout.scss";
 
@@ -29,6 +28,7 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  
   const location = useLocation();
 
   const handleDrawerClose = () => {
